@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="ADD MEMBER"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"/>
+
+
+    <EditText
+        android:id="@+id/add_fullname"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="  enter fullname"
+        android:textSize="25dp"
+        android:background="@drawable/shape_line"
+        android:layout_marginTop="40dp"/>
+    <EditText
+        android:id="@+id/add_pnumber"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="  enter phone number"
+        android:textSize="25dp"
+        android:background="@drawable/shape_line"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/add_name"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="  enter email"
+        android:textSize="25dp"
+        android:background="@drawable/shape_line"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/add_pass"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="  enter password"
+        android:textSize="25dp"
+        android:inputType="textPassword"
+        android:background="@drawable/shape_line"
+        android:layout_marginTop="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF83FA"
+            android:text="add"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+</LinearLayout>

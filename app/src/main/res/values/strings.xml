@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Smarthouse01</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_account">Account</string>
+    <string name="nav_setting">Setting</string>
+    <string name="navigation_drawer_open">open navigation drawer</string>
+    <string name="navigation_drawer_close">close navigation drawer</string>
+</resources>

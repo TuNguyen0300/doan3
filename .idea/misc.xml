@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/f_add_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/f_home.xml" value="0.24010416666666667" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/fan.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/fan_contrl.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/layout_header_nav.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/menu_nav.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/layout/r_living.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/menu/menu_fan.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/2021_2/doan3/app/app/src/main/res/menu/menu_nav.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/button.xml" value="0.236" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_add_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_key_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_lock_person_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_password_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_person_add_alt_24.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_baseline_restore_from_trash_24.xml" value="0.124" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/image.xml" value="0.236" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/menu_account.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/menu_setting.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/shape_button.xml" value="0.236" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/shape_image.xml" value="0.236" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/drawable/shape_line.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/account.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/devices.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/dialog_add_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/f_account.xml" value="0.253125" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/f_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/f_logout.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/f_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/f_settings.xml" value="0.253125" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/function.xml" value="0.4" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/home.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/layout_header_nav.xml" value="0.24010416666666667" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/layoutroom.xml" value="0.2" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/line_acc.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/listroom.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/login.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/menu_nav.xml" value="0.19293478260869565" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/menuhome.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/r_bedroom.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/r_bedroom1.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/r_kitchen.xml" value="0.20854700854700856" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/r_living.xml" value="0.253125" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/layout/rooms.xml" value="0.2" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/menu/menu_nav.xml" value="0.25416666666666665" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.254" />
+        <entry key="..\:/learning/da3/app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.124" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

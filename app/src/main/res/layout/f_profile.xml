@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="50dp">
+        <TextView
+            android:id="@+id/txt_greeting"
+            android:textSize="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="greeting"
+            android:textColor="#AA2BBF"
+            android:textStyle="bold"/>
+        <ImageView
+            android:id="@+id/img_per"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/person"/>
+        <TextView
+            android:textSize="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Full Name:"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/txt_name"
+            android:textSize="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"/>
+        <TextView
+            android:textSize="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email Address:"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/txt_email"
+            android:textSize="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="email"/>
+        <TextView
+            android:textSize="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number:"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/txt_pnumber"
+            android:textSize="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"/>
+    </LinearLayout>
+
+</LinearLayout>
