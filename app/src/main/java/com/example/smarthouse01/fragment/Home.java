@@ -1,7 +1,12 @@
 package com.example.smarthouse01.fragment;
 
+import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,6 +22,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -37,7 +44,7 @@ public class Home extends Fragment {
     Switch SWgara, SWgate, SWfan;
     TextView txtHumi, txtTemp, txtNotice, txtFanCtrl;
     SeekBar SBLight;
-    String position, i, j, k;
+    String position, i, j, k, l, rainValue, fan;
     ImageView Img_menu;
 
     @Nullable
@@ -61,24 +68,24 @@ public class Home extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    if (SWgara.isChecked()==true){
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "1",k);
-                        i = "1";
-                        j = "1";
+                    if (SWgara.isChecked() == true) {
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "1.0", k, l);
+                        i = "1.0";
+                        j = "1.0";
                     } else {
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "0",k);
-                        i = "1";
-                        j = "0";
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "0.0", k, l);
+                        i = "1.0";
+                        j = "0.0";
                     }
                 } else {
-                    if (SWgara.isChecked()==true){
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "1",k);
-                        i = "0";
-                        j = "1";
+                    if (SWgara.isChecked() == true) {
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "1.0", k, l);
+                        i = "0.0";
+                        j = "1.0";
                     } else {
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "0",k);
-                        i = "0";
-                        j = "0";
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "0.0", k, l);
+                        i = "0.0";
+                        j = "0.0";
                     }
                 }
             }
@@ -88,24 +95,24 @@ public class Home extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    if (SWgate.isChecked()==true){
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "1",k);
-                        i = "1";
-                        j = "1";
+                    if (SWgate.isChecked() == true) {
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "1.0", k, l);
+                        i = "1.0";
+                        j = "1.0";
                     } else {
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "1",k);
-                        i = "0";
-                        j = "1";
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "1.0", k, l);
+                        i = "0.0";
+                        j = "1.0";
                     }
                 } else {
-                    if (SWgate.isChecked()==true){
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "0",k);
-                        i = "1";
-                        j = "0";
+                    if (SWgate.isChecked() == true) {
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "0.0", k, l);
+                        i = "1.0";
+                        j = "0.0";
                     } else {
-                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "0",k);
-                        i = "0";
-                        j = "0";
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "0.0", k, l);
+                        i = "0.0";
+                        j = "0.0";
                     }
                 }
             }
@@ -116,7 +123,7 @@ public class Home extends Fragment {
             public void onProgressChanged(SeekBar seekBar, int posi, boolean b) {
                 position = String.valueOf(posi);
 
-                update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", i, j,k);
+                update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, i, j, k, l);
             }
 
             @Override
@@ -141,6 +148,7 @@ public class Home extends Fragment {
 
         return view;
     }
+
     private void get_Data() {
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -152,44 +160,55 @@ public class Home extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonArray = response.getJSONArray("feeds");
-                            JSONObject jsonObject = jsonArray.getJSONObject(jsonArray.length()-1);
+                            JSONObject jsonObject = jsonArray.getJSONObject(jsonArray.length() - 1);
                             String Temp = jsonObject.getString("field1");
                             String Humi = jsonObject.getString("field2");
                             String Light = jsonObject.getString("field3");
                             position = Light;
+                            String Rain_value = jsonObject.getString("field4");
                             String Gara = jsonObject.getString("field6");
                             String Gate = jsonObject.getString("field5");
                             String Fan = jsonObject.getString("field7");
 
+                            //
                             txtTemp.setText(Temp);
-
+                            ////////////////////////////
                             txtHumi.setText(Humi);
                             float hum = Float.parseFloat(Humi);
                             float a = 50;
-
-                            if (hum < a){
-                                txtNotice.setText(" (Below standard of humidity! Need to be irrigated)");
+                            if (hum < a) {
+                                txtNotice.setText(" Below standard of humidity! Need to be irrigated");
                                 txtNotice.setTextColor(Color.parseColor("#D82D2D"));
                             } else {
-                                txtNotice.setText(" (In allowed standard of humidity)");
+                                txtNotice.setText(" In allowed standard of humidity");
                                 txtNotice.setTextColor(Color.parseColor("#39AC31"));
                             }
-
-                            if (Gara.compareTo("1") == 0){
+                            ////////////////////////////
+                            rainValue = Rain_value;
+                            float rain = Float.parseFloat(Rain_value);
+                            float b = 20;
+                            if (rain > b) {
+                                notification();
+                            }
+                            ////////////////////////////
+                            if (Gara.compareTo("1.0") == 0) {
                                 SWgara.setChecked(true);
                             } else {
                                 SWgara.setChecked(false);
                             }
-
-                            if (Gate.compareTo("1") == 0){
+                            ////////////////////////////
+                            if (Gate.compareTo("1.0") == 0) {
                                 SWgate.setChecked(true);
                             } else SWgate.setChecked(false);
 
-                            if (Fan.compareTo("1") == 0){
+                            ////////////////////////////
+                            if (Fan.compareTo("1.0") == 0) {
                                 SWfan.setChecked(true);
                             } else SWfan.setChecked(false);
 
-                            SBLight.setProgress(Integer.valueOf(Light));
+                            ////////////////////////////
+                            int po = (int) Float.parseFloat(Light);
+                            SBLight.setProgress(po);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -202,6 +221,7 @@ public class Home extends Fragment {
         });
         requestQueue.add(request);
     }
+
     private void get_Data_Fan() {
         RequestQueue requestQueue;
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -213,10 +233,12 @@ public class Home extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonArray = response.getJSONArray("feeds");
-                            JSONObject jsonObject = jsonArray.getJSONObject(jsonArray.length()-1);
+                            JSONObject jsonObject = jsonArray.getJSONObject(jsonArray.length() - 1);
                             String Fan = jsonObject.getString("field7");
 
-                            if (Fan.compareTo("1") == 0){
+                            fan = Fan;
+
+                            if (Fan.compareTo("1.0") == 0) {
                                 SWfan.setChecked(true);
                             } else SWfan.setChecked(false);
 
@@ -233,7 +255,7 @@ public class Home extends Fragment {
         requestQueue.add(request);
     }
 
-    public void update_data(String Temp, String Humi, String Light, String Rain_Value, String Gate, String Gara, String Fan){
+    public void update_data(String Temp, String Humi, String Light, String Rain_Value, String Gate, String Gara, String Fan, String Option_level) {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         Uri builtUri = Uri.parse("https://api.thingspeak.com/update?")
@@ -245,6 +267,7 @@ public class Home extends Fragment {
                 .appendQueryParameter("field5", Gate)
                 .appendQueryParameter("field6", Gara)
                 .appendQueryParameter("field7", Fan)
+                .appendQueryParameter("field8", Option_level)
                 .build();
         String url = builtUri.toString();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -268,67 +291,79 @@ public class Home extends Fragment {
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.menu_Auto:
                         txtFanCtrl.setText("  automatically");
                         get_Data_Fan();
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, i, j, fan, "1.0");
+                        l = "1.0";
                         break;
                     case R.id.menu_Man:
                         txtFanCtrl.setText("  manually");
+                        update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, i, j, "0.0", "0.0");
+                        SWfan.setChecked(false);
                         SWfan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
                             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                                 if (isChecked) {
-                                    if (SWgate.isChecked() == true){
-                                        if (SWgara.isChecked()==true){
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "1","1");
-                                            i = "1";
-                                            j = "1";
-                                            k = "1";
+                                    if (SWgate.isChecked() == true) {
+                                        if (SWgara.isChecked() == true) {
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "1.0", "1.0", "0.0");
+                                            i = "1.0";
+                                            j = "1.0";
+                                            k = "1.0";
+                                            l = "0.0";
                                         } else {
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "0", "1");
-                                            i = "1";
-                                            j = "0";
-                                            k = "1";
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "0.0", "1.0", "0.0");
+                                            i = "1.0";
+                                            j = "0.0";
+                                            k = "1.0";
+                                            l = "0.0";
                                         }
                                     } else {
-                                        if (SWgara.isChecked()==true){
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "1","1");
-                                            i = "0";
-                                            j = "1";
-                                            k = "1";
+                                        if (SWgara.isChecked() == true) {
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "1.0", "1.0", "0.0");
+                                            i = "0.0";
+                                            j = "1.0";
+                                            k = "1.0";
+                                            l = "0.0";
                                         } else {
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "0", "1");
-                                            i = "0";
-                                            j = "0";
-                                            k = "1";
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "0.0", "0.0", "0.0");
+                                            i = "0.0";
+                                            j = "0.0";
+                                            k = "1.0";
+                                            l = "0.0";
                                         }
                                     }
 
                                 } else {
-                                    if (SWgate.isChecked() == true){
-                                        if (SWgara.isChecked()==true){
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "1","0");
-                                            i = "1";
-                                            j = "1";
-                                            k = "0";
+                                    if (SWgate.isChecked() == true) {
+                                        if (SWgara.isChecked() == true) {
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "1.0", "0.0", "0.0");
+                                            i = "1.0";
+                                            j = "1.0";
+                                            k = "0.0";
+                                            l = "0.0";
                                         } else {
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "1", "0", "0");
-                                            i = "1";
-                                            j = "0";
-                                            k = "0";
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "1.0", "0.0", "0.0", "0.0");
+                                            i = "1.0";
+                                            j = "0.0";
+                                            k = "0.0";
+                                            l = "0.0";
                                         }
                                     } else {
-                                        if (SWgara.isChecked()==true){
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "1","0");
-                                            i = "0";
-                                            j = "1";
-                                            k = "0";
+                                        if (SWgara.isChecked() == true) {
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "1.0", "0.0", "0.0");
+                                            i = "0.0";
+                                            j = "1.0";
+                                            k = "0.0";
+                                            l = "0.0";
                                         } else {
-                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(),position, "30", "0", "0", "0");
-                                            i = "0";
-                                            j = "0";
-                                            k = "0";
+                                            update_data(txtTemp.getText().toString(), txtHumi.getText().toString(), position, rainValue, "0.0", "0.0", "0.0", "0.0");
+                                            i = "0.0";
+                                            j = "0.0";
+                                            k = "0.0";
+                                            l = "0.0";
                                         }
                                     }
                                 }
@@ -341,4 +376,24 @@ public class Home extends Fragment {
         });
         popupMenu.show();
     }
+
+    public void notification() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", importance);
+            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "My Notification")
+                    .setSmallIcon(R.drawable.notifcation_icon)
+                    .setContentTitle("Warning")
+                    .setContentText("Mưa to rồi! Mưa to rồi! Mau... Mau... Mau vào thôi.....")
+                    .setAutoCancel(true)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity());
+
+            notificationManager.notify(1, builder.build());
+        }
 }
